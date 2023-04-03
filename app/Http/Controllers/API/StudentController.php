@@ -76,11 +76,25 @@ class StudentController extends Controller
     public function show($id)
     {
         $student = student::find($id);
-        return response()->json([
-            'status'=>200,
-            // 'message'=>'students list are here',
-            'students'=>$student,
-        ],200);
+
+        if( $student)
+        {
+            return response()->json([
+                'status'=>200,
+                // 'message'=>'students list are here',
+                'students'=>$student,
+            ],200);
+
+        }
+        else{
+            return response()->json([
+                'status'=>404,
+                // 'message'=>'students list are here',
+                'students'=>'Id Not found',
+            ],200);
+
+        }
+
     }
 
 
