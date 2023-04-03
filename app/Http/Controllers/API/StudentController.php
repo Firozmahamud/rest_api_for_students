@@ -17,6 +17,11 @@ class StudentController extends Controller
     public function index()
     {
         $students = student::all();
+        return response()->json([
+            'status'=>200,
+            'message'=>'students list are here',
+            'students'=>$students,
+        ],200);
     }
 
     /**
@@ -67,46 +72,30 @@ class StudentController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        //
+        $student = student::find($id);
+        return response()->json([
+            'status'=>200,
+            // 'message'=>'students list are here',
+            'students'=>$student,
+        ],200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //
